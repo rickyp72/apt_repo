@@ -1,0 +1,15 @@
+{
+  "client": {
+    "address": "192.168.33.10",
+    "subscriptions": [
+      "linux",
+      "all",
+      "Production"
+    ],
+    "name": "apt_repo",
+    "platform": "ubuntu",
+    "platform_version": "14.04",
+    "platform_family": "debian",
+    "scheme_prefix": "sensu.default."
+  }
+}
