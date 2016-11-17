@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.box_url doesn't need to be specified.
   config.vm.box = 'bento/ubuntu-14.04'
   config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 80
   # config.vm.network "public_network"
 
 
@@ -78,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.berkshelf.except = []
   $script = <<SCRIPT
       echo I am provisioning...
-      /root/scanpackages.sh
+      # /root/scanpackages.sh
       # apt-get update
 SCRIPT
 
