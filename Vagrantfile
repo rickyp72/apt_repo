@@ -18,15 +18,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   $ vagrant plugin install vagrant-omnibus
   #
-  if Vagrant.has_plugin?("vagrant-omnibus")
-    config.omnibus.chef_version = 'latest'
-  end
+  # if Vagrant.has_plugin?("vagrant-omnibus")
+  #   config.omnibus.chef_version = 'latest'
+  # end
 
   # Every Vagrant virtual environment requires a box to build off of.
   # If this value is a shorthand to a box in Vagrant Cloud then
   # config.vm.box_url doesn't need to be specified.
   config.vm.box = 'bento/ubuntu-14.04'
   config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "public_network"
 
 
   # Assign this VM to a host-only network IP, allowing you to access it
@@ -76,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.berkshelf.except = []
   $script = <<SCRIPT
       echo I am provisioning...
-      # /root/scanpackages.sh
+      /root/scanpackages.sh
       # apt-get update
 SCRIPT
 

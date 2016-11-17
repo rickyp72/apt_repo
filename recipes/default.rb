@@ -39,7 +39,7 @@ cookbook_file '/etc/apache2/sites-enabled/rnb_repo.conf' do
   notifies :restart, 'service[apache2]'
 end
 
-file '/etc/apache2/sites-enabled/000-default' do
+file '/etc/apache2/sites-enabled/000-default.conf' do
   action :delete
   notifies :restart, 'service[apache2]'
 end
