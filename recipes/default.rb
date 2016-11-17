@@ -30,12 +30,17 @@ directory '/var/www/ubuntu1404' do
   action :create
 end
 
-cookbook_file '/etc/apache2/sites-enabled/000-default.conf' do
+cookbook_file '/etc/apache2/sites-enabled/rnb_repo.conf' do
   source '000-default.conf'
   owner 'root'
   group 'root'
   mode 00644
   action :create
+  notifies :restart, 'service[apache2]'
+end
+
+file '/etc/apache2/sites-enabled/000-default' do
+  action :delete
   notifies :restart, 'service[apache2]'
 end
 
@@ -45,7 +50,7 @@ service 'apache2' do
 end
 
 link '/var/www/ubuntu1404/debs' do
-  to '/vagrant/www/debs'
+  to '/vagrant/www/ubuntu1404/debs'
 end
 
 cookbook_file '/root/scanpackages.sh' do
