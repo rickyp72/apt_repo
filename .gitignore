@@ -18,3 +18,4 @@ bin/*
 www/*
 .kitchen/
 .kitchen.local.yml
+*.deb
