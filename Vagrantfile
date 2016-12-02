@@ -18,9 +18,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   $ vagrant plugin install vagrant-omnibus
   #
-  # if Vagrant.has_plugin?("vagrant-omnibus")
-  #   config.omnibus.chef_version = 'latest'
-  # end
+#  if Vagrant.has_plugin?("vagrant-omnibus")
+#    config.omnibus.chef_version = 'latest'
+ # end
 
   # Every Vagrant virtual environment requires a box to build off of.
   # If this value is a shorthand to a box in Vagrant Cloud then
@@ -75,8 +75,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
   $script = <<SCRIPT
-      echo I am provisioning...
-      /root/scanpackages.sh
+       echo I am provisioning...
+       /root/scanpackages.sh
       # apt-get update
 SCRIPT
 
@@ -94,6 +94,7 @@ SCRIPT
     chef.cookbooks_path = "../../cookbooks"
     chef.run_list = [
       'recipe[apt_repo::default]',
+      'recipe[rnbsensu::client]'
     ]
   end
 end
